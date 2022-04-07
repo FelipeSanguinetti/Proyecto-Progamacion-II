@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow:rgb(49,47,53);
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -71,7 +71,7 @@ hr {
   background-color: var(--yellow);
 }
 
-.main-header_home-link,
+.main-header_home-link ,
 .main-header_credit-link {
   display: block;
 }
@@ -80,8 +80,12 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  color: white;
 }
 
+.todosP {
+  color: white;
+}
 .search-form {
   position: relative;
   display: flex;
