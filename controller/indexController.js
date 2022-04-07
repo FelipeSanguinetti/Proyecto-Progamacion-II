@@ -17,7 +17,10 @@ const controller = {
         return res.render('product', {title: 'Product'})
     },
     profile: function(req, res){
-        return res.render('profile', {title: 'Profile'})
+        return res.render('profile', {
+            title: 'Profile',
+            usuario: products.usuarios
+        })
     }
 };
 
