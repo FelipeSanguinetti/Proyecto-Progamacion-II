@@ -1,5 +1,11 @@
 const data = {
-    usuario: {},
+    usuarios: {
+        usuario: 'juanperez',
+        nombre: 'Juan',
+        apellido: 'Pérez',
+        mail: 'juanperez@gmail.com',
+        profile: '../public/images/usuarios/juanperez.jpg'
+    },
     comentarios: [{}],
     products: [
     {
@@ -66,4 +72,8 @@ const data = {
 ]
 }
 
-module.exports = data;
+module.exports = {
+    usuarios: data.usuarios,
+    comentarios: data.comentarios,
+    products: data.products
+}

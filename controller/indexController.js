@@ -15,6 +15,9 @@ const controller = {
     },
     product: function(req, res){
         return res.render('product', {title: 'Product'})
+    },
+    profile: function(req, res){
+        return res.render('profile', {title: 'Profile'})
     }
 };
 
