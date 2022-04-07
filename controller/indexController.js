@@ -13,9 +13,6 @@ const controller = {
     searchResults: function(req, res){
         return res.render('search-results', {title: 'Search Results'});
     },
-    product: function(req, res){
-        return res.render('product', {title: 'Product'})
-    },
     profile: function(req, res){
         return res.render('profile', {
             title: 'Profile',
@@ -27,7 +24,9 @@ const controller = {
     },
     profileEdit: function(req, res){
         return res.render('profile-edit', {title: 'Edit Profile'})
-    }
+    
+    },
+   
 };
 
 module.exports = controller;
