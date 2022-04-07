@@ -11,7 +11,7 @@ const controller = {
         return res.render('register', {title: 'Register'});
     },
     searchResults: function(req, res){
-        return res.render('search-results', {title: 'Search-Results'});
+        return res.render('search-results', {title: 'Search Results'});
     },
     product: function(req, res){
         return res.render('product', {title: 'Product'})
@@ -22,6 +22,12 @@ const controller = {
             usuario: products.usuarios
         })
     },
+    productAdd: function(req, res){
+        return res.render('product-add', {title: 'Add Product'})
+    },
+    profileEdit: function(req, res){
+        return res.render('profile-edit', {title: 'Edit Profile'})
+    }
 };
 
 module.exports = controller;

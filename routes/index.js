@@ -9,5 +9,7 @@ router.get('/register', controller.register);
 router.get('/search', controller.searchResults);
 router.get('/product', controller.product);
 router.get('/profile', controller.profile);
+router.get('/product-add', controller.productAdd);
+router.get('/profile-edit', controller.profileEdit);
 
 module.exports = router;
