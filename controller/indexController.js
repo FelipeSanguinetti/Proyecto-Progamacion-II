@@ -21,7 +21,7 @@ const controller = {
             title: 'Profile',
             usuario: products.usuarios
         })
-    }
+    },
 };
 
 module.exports = controller;
