@@ -4,7 +4,7 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow:rgb(49,47,53);
+  --oscuro:rgb(49,47,53);
   --dark-blue: #03264C;
   --light-blue: #1259c3;
   --gray: #666666;
@@ -68,7 +68,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: var(--oscuro);
 }
 
 .main-header_home-link ,
@@ -158,7 +158,7 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  background-image: url(/images/banner.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
