@@ -2,7 +2,10 @@ var products = require('../db/products')
 
 const controller = {
     index: function(req, res){
-        return res.render('index', {title: 'Index'});
+        return res.render('index', {
+            title: 'Index',
+            products: products.products
+    });
     },
     login: function(req, res){
         return res.render('login', {title: 'Login'});
