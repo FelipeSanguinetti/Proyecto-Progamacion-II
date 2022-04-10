@@ -4,6 +4,6 @@ var controller = require('../controller/productController')
 
 /* GET users listing. */
 
-router.get('/:id', controller.product);
+router.get('/id/:id?', controller.product);
 
 module.exports = router;
