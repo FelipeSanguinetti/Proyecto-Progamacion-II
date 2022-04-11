@@ -7,7 +7,6 @@ router.get('/', controller.index);
 router.get('/login', controller.login);
 router.get('/register', controller.register);
 router.get('/search', controller.searchResults);
-router.get('/profile', controller.profile);
 router.get('/product-add', controller.productAdd);
 router.get('/profile-edit', controller.profileEdit);
 

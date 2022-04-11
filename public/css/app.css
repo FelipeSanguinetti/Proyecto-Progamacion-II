@@ -74,6 +74,14 @@ hr {
 .main-header_home-link ,
 .main-header_credit-link {
   display: block;
+} 
+
+.main-header_home-link{
+  margin-left: -40px;
+}
+.main-header_home-link img{
+  height: 80px;
+  width: auto;
 }
 
 .main-header_credit-link {

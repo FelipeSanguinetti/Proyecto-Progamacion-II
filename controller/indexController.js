@@ -16,12 +16,6 @@ const controller = {
     searchResults: function(req, res){
         return res.render('search-results', {title: 'Search Results'});
     },
-    profile: function(req, res){
-        return res.render('profile', {
-            title: 'Profile',
-            usuario: products.usuarios
-        })
-    },
     productAdd: function(req, res){
         return res.render('product-add', {title: 'Add Product'})
     },
