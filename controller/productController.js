@@ -5,25 +5,12 @@ const controller = {
     product: function(req, res){
         return res.render('product', {
             title: 'Product',
-            products: products.products
-            
-       
+            product: products.product[req.params.id - 1],
+            comments: products.comentarios,
+    
 
         })
     },
-
-   product: function(req,res){
-
-       
-        return res.render('product', {
-            title: 'Product',
-            id: req.params.id,
-            products: products.products
-            
-        })
-            
-
-  },
 
 
 };

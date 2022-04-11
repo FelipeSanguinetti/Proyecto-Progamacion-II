@@ -6,7 +6,31 @@ const data = {
         mail: 'juanperez@gmail.com',
         profile: '/images/users/juanperez.jpg'
     },
-    comentarios: [{}],
+    comentarios: [{
+        content: 'Que rica pizza!',
+        user: 'juanperez',
+        photo: '/images/users/juanperez.jpg',
+    },
+    {
+        content: 'Que buena foto',
+        user: 'juanperez',
+        photo: '/images/users/juanperez.jpg',
+    },
+    {
+        content: 'Me encanta!',
+        user: 'juanperez',
+        photo: '/images/users/juanperez.jpg',
+    },
+    {
+        content: 'Que buenos colores',
+        user: 'juanperez',
+        photo: '/images/users/juanperez.jpg',
+    },
+    {
+        content: 'Que pinta!!',
+        user: 'juanperez',
+        photo: '/images/users/juanperez.jpg',
+    }],
     products: [
     {
         id: 1,
@@ -77,5 +101,5 @@ const data = {
 module.exports = {
     usuarios: data.usuarios,
     comentarios: data.comentarios,
-    products: data.products
+    product: data.products
 }
