@@ -31,7 +31,7 @@ const data = {
         user: 'juanperez',
         photo: '/images/users/juanperez.jpg',
     }],
-    
+
     products: [
     {
         id: 1,
@@ -103,7 +103,50 @@ const data = {
         nombre: 'Strozzapretti',
         descripcion: 'Strozzapretti con bolognesa de bondiola, acompañado con una focaccia.',
         fecha: 04/11/2020
+    },{
+        id: 11,
+        tipo: 'pizza',
+        imagen: '/images/products/margerita.png',
+        nombre: 'Margherita',
+        descripcion: 'Pizza napoletana con fior di latte, tomate cherry y albahaca. La clasica.',
+        fecha: 21/09/2019
+    },{
+        id: 12,
+        tipo: 'pizza',
+        imagen: '/images/products/mpicante.png',
+        nombre: 'Margherita Picante',
+        descripcion: 'Pizza napoletana picante con fior di latte, tomate cherry, albahaca y `Nduja',
+        fecha: 30/11/2018
+    },{
+        id: 13,
+        tipo: 'pizza',
+        imagen: '/images/products/guanciale.png',
+        nombre: 'Guanciale',
+        descripcion: 'Pizza napoletana con fior di latte y guanciale.',
+        fecha: 10/02/2020
+    },{
+        id: 14,
+        tipo: 'pasta',
+        imagen: '/images/products/tagliatele.png',
+        nombre: 'Tagliatelle',
+        descripcion: 'Tagliatelle all`Bolognese.',
+        fecha: 03/16/2021
+    },{
+        id: 15,
+        tipo: 'pasta',
+        imagen: '/images/products/triangoli.png',
+        nombre: 'Triangoli',
+        descripcion: 'Triangoli relleno de batata, boñato y queso de cabra',
+        fecha: 04/02/2022
+    },{
+        id: 16,
+        tipo: 'pasta',
+        imagen: '/images/products/caramelle.png',
+        nombre: 'Caramelle',
+        descripcion: 'Caramelle rellenos de queso azul, parmesano, ricota y albahaca con Cacio e pape de anchoas',
+        fecha: 31/07/2020
     },
+
 ]
 }
 
