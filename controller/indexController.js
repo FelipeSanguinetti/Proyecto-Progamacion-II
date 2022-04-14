@@ -15,7 +15,11 @@ const controller = {
         return res.render('register', {title: 'Register'});
     },
     searchResults: function(req, res){
-        return res.render('search-results', {title: 'Search Results'});
+        return res.render('search-results', {
+            title: 'Search Results',
+            products: products.products,
+            comments: products.comentarios
+        });
     },
     productAdd: function(req, res){
         return res.render('product-add', {title: 'Add Product'})

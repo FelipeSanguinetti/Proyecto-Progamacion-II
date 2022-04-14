@@ -7,8 +7,6 @@ const controller = {
             title: 'Product',
             product: products.products[req.params.id - 1],
             comments: products.comentarios,
-    
-
         })
     },
 
