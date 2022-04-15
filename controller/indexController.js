@@ -3,29 +3,27 @@ var products = require('../db/products')
 const controller = {
     index: function(req, res){
         return res.render('index', {
-            title: 'Index',
             products: products.products,
             comments: products.comentarios,
     });
     },
     login: function(req, res){
-        return res.render('login', {title: 'Login'});
+        return res.render('login');
     },
     register: function(req, res){
-        return res.render('register', {title: 'Register'});
+        return res.render('register');
     },
     searchResults: function(req, res){
         return res.render('search-results', {
-            title: 'Search Results',
             products: products.products,
             comments: products.comentarios
         });
     },
     productAdd: function(req, res){
-        return res.render('product-add', {title: 'Add Product'})
+        return res.render('product-add')
     },
     profileEdit: function(req, res){
-        return res.render('profile-edit', {title: 'Edit Profile'})
+        return res.render('profile-edit')
     
     },
    
