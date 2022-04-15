@@ -101,6 +101,14 @@ hr {
 .pizza-header{
   width: 30px;
   color: white;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-left: 20px;
+}
+
+.pastaFoto{
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .todosP {
@@ -651,6 +659,6 @@ textarea.form-input {
   }
 
   .main-header_credit-link{
-    text-align: center;
+    display: flex;
   }
 }
