@@ -21,7 +21,7 @@ module.exports= function(sequelize,DataTypes){
     }
 
 
-    const Product= sequelize.define('Product',cols,confignos)
+    const Product= sequelize.define('Product',cols,config)
 
     return Product;
 
