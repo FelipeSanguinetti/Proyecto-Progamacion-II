@@ -38,7 +38,7 @@ module.exports= function(sequelize,DataTypes){
 
     const configs={
         tableName:'productos',
-        timestampes:false
+        timestamps:false
     }
 
 

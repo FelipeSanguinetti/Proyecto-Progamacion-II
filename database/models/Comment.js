@@ -28,7 +28,7 @@ module.exports= function(sequelize,DataTypes){
     const configs={
         
         tableName:'comentarios',
-        timestampes:false
+        timestamps:false
     }
 
 

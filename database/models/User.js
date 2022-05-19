@@ -6,9 +6,10 @@ module.exports= function(sequelize,DataTypes){
 
     const cols={
         id:{
-            autoincrement: true,
+            autoIncrement: true,
             primaryKey: true,
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER.UNSIGNED,
+            allowNull: false
         },
         usuario:{
             type:DataTypes.STRING, 
@@ -36,9 +37,8 @@ module.exports= function(sequelize,DataTypes){
     }
 
     const configs={
-        
         tableName:'usuarios',
-        timestampes:false
+        timestamps:false
     }
 
     const User= sequelize.define('User',cols, configs)
