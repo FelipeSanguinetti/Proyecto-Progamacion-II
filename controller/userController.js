@@ -8,6 +8,7 @@ const controller = {
             comments: products.comentarios,
         });
     },
+    
 };
 
 module.exports = controller;

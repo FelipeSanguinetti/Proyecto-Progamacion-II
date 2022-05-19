@@ -9,6 +9,6 @@ router.get('/register', controller.register);
 router.get('/search', controller.searchResults);
 router.get('/product-add', controller.productAdd);
 router.get('/profile-edit', controller.profileEdit);
-
+router.post('/register', controller.storeRegister)
 
 module.exports = router;

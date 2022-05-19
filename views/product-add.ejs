@@ -7,30 +7,29 @@
 				<h2 class="products-title">Agregar productos</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form class="product-add-form">
+			<form method="POST" class="product-add-form">
 				<div class="mb-3">
-					<label for="productName" class="form-label">Nombre del producto</label>
-					<input type="text" class="form-control-reg" id="productName">
+					<label for="nombre" class="form-label">Nombre del producto</label>
+					<input type="text" class="form-control-reg" name="nombre" id="nombre">
 				</div>
 				<div class="mb-3 form-picture">
-					<label class="form-label" for="productPicture">Agregá una imagen</label>
-					<input type="file" class="form-control-reg" id="productPicture">
+					<label class="form-label" for="imagen">Agregá una imagen</label>
+					<input type="file" class="form-control-reg" name="imagen" id="imagen">
 				</div>
 				<div class="mb-3">
-					<label for="productDesc" class="form-label">Descripción</label>
-					<input type="text" class="form-control-reg" id="productDesc">
+					<label for="descripcion" class="form-label">Descripción</label>
+					<input type="text" class="form-control-reg" name="descripcion" id="descripcion">
 				</div>
 				<div>
-				<label for="tipoProducto" class="form-label">Tipo de producto: </label>
-				<select id="tipoProducto" class="mb-3 form-select-me">
-					<option selected>Seleccionar</option>
+				<label for="tipo" class="form-label">Tipo de producto: </label>
+				<select id="tipoProducto" class="mb-3 form-select-me" name="tipo" id="tipo">
 					<option value="pizza">Pizza</option>
 					<option value="pasta">Pasta</option>
 				</select>
 				</div>
 				<div class="mb-3 form-date">
-					<label class="form-label" for="productDate">Fecha de carga</label>
-					<input type="date" class="form-control-reg" id="productDate">
+					<label class="form-label" for="fecha">Fecha de carga</label>
+					<input type="date" class="form-control-reg" name="fecha" id="fecha">
 				</div>
 				<button type="submit" class="btn btn-primary">Subir</button>
 			</form>

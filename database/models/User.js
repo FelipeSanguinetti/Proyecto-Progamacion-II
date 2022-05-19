@@ -6,10 +6,9 @@ module.exports= function(sequelize,DataTypes){
 
     const cols={
         id:{
-            autoIncremenyt:true,
-            primaryKey:true,
-            type:DataTypes.INTEGER.UNSIGNED,
-            allowNull: false
+            autoincrement: true,
+            primaryKey: true,
+            type: DataTypes.INTEGER
         },
         usuario:{
             type:DataTypes.STRING, 
@@ -32,8 +31,7 @@ module.exports= function(sequelize,DataTypes){
             allowNull: false
         },
         imagen:{
-            type:DataTypes.STRING, 
-            allowNull: false
+            type:DataTypes.STRING
         }
     }
 
