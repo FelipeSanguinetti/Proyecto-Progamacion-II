@@ -3,10 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
+var db= require('./database/models');
 
 var app = express();
 
@@ -19,6 +20,33 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session( { secret: "Nuestro mensaje secreto",
+				resave: false,
+				saveUninitialized: true }));
+
+
+
+        // Cookie middleware
+app.use(function(req, res, next) {
+  if (!req.session.user) {
+    // Find the user
+    db.User.findByPk(req.cookies.userId)
+    .then(function(user) {
+      // Act as login
+      req.session.user = user;
+      next();
+    })
+  } else {
+    next();
+  }
+})
+
+// Session middleware
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+})
+
 
 app.use('/', indexRouter);
 app.use('/profile', usersRouter);

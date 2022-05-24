@@ -5,6 +5,7 @@ var controller = require('../controller/indexController');
 /* GET home page. */
 router.get('/', controller.index);
 router.get('/login', controller.login);
+router.post('/login', controller.access)
 router.get('/register', controller.register);
 router.get('/search', controller.searchResults);
 router.get('/product-add', controller.productAdd);
