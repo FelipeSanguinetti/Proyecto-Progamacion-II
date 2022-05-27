@@ -22,6 +22,10 @@ const controller = {
             .then(function(user) {
                 if (!user) throw Error('User not found.')
                 if (hasher.compareSync(req.body.contrasena, user.contrasena)) {
+                    req.session.user = user;
+                    if (req.body.rememberme){
+                        res.cookie('userId', user.id, {maxAge: 1000 * 60 * 60 * 7})
+                    }
                     res.redirect('/');
                 } else {
                     throw Error('Invalid credentials.')
@@ -30,9 +34,12 @@ const controller = {
             .catch(function (err) {
                 next(err)
             })
-        },
-
-
+    },
+    logout: function(req, res){
+        req.session.user = null;
+        res.clearCookie('userId');
+        res.redirect('/');
+    },
     register: function(req, res){
         return res.render('register');
     },

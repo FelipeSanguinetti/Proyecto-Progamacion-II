@@ -53,13 +53,15 @@
 	
 				<ul class="right-navbar">
 					<li><a href="/profile" class="todosP href-hover">
-							juanperez <i class="fas fa-user"></i>
+							<%= locals.user.usuario %> <i class="fas fa-user"></i>
 						</a>
 					</li>
 					<li>
 						<form action="/" method="GET">
 							<button class="logout todosP" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+								<a href="/logout">
+									Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+								</a>
 							</button>
 						</form>
 					</li>

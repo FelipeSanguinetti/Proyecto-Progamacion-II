@@ -4,12 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var app = express();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var db= require('./database/models');
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,13 +28,21 @@ app.use(session( { secret: "Nuestro mensaje secreto",
 
 
         // Cookie middleware
+
+
+// Session middleware
+/* app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+}); */
+
 app.use(function(req, res, next) {
-  if (!req.session.user) {
+  if (!req.session.user && req.cookies.userId) {
     // Find the user
     db.User.findByPk(req.cookies.userId)
-    .then(function(user) {
+    .then(function(data) {
       // Act as login
-      req.session.user = user;
+      req.session.user = data;
       next();
     })
   } else {
@@ -41,11 +50,13 @@ app.use(function(req, res, next) {
   }
 })
 
-// Session middleware
 app.use(function(req, res, next) {
-  res.locals.user = req.session.user;
-  next();
-})
+	if (req.session.user != undefined) {
+		res.locals.user = req.session.user
+     }
+return next();
+});
+
 
 
 app.use('/', indexRouter);
