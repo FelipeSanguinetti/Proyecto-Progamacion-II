@@ -44,8 +44,8 @@ const controller = {
         return res.render('register');
     },
     storeRegister: function(req, res){
-        
         req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
+        if (req.file) req.body.imagen = (req.file.path).replace('public', '');
         db.User.create(req.body)
         .then(function(){
             res.redirect('/login');
@@ -54,6 +54,24 @@ const controller = {
             res.send(error);
         })
     },
+update:function(req,res){
+
+    req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
+    if (req.file) req.body.imagen = (req.file.path).replace('public', '');
+    db.User.update(req.body,{where: {id: req.session.user.id}})
+        .then(function(data){
+            if (req.file) {
+                req.session.user.imagen = req.body.imagen;
+            }
+            res.redirect('/')
+        })
+
+        .catch(function(error){
+            res.send(error)
+        })
+
+},
+
     searchResults: function(req, res){
         return res.render('search-results', {
             products: products.products,
