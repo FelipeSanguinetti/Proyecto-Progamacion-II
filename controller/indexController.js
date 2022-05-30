@@ -23,7 +23,7 @@ const controller = {
                 if (!user) throw Error('User not found.')
                 if (hasher.compareSync(req.body.contrasena, user.contrasena)) {
                     req.session.user = user;
-                    if (req.body.rememberme){
+                    if (req.body.recordarme){
                         res.cookie('userId', user.id, {maxAge: 1000 * 60 * 60 * 7})
                     }
                     res.redirect('/');
@@ -65,7 +65,6 @@ const controller = {
     },
     profileEdit: function(req, res){
         return res.render('profile-edit')
-    
     },
    
 };
