@@ -35,10 +35,10 @@ module.exports= function(sequelize,DataTypes){
         }
 
     }
-
+ 
     const configs={
         tableName:'productos',
-        timestamps:false
+        timeStamps: true
     }
 
 
@@ -46,4 +46,17 @@ module.exports= function(sequelize,DataTypes){
 
     return Product;
 
+     Product.associate = function(models){
+        Product.belongsTo(models.User, {
+            as: "usuario",
+            foreignKey: "usuario_id"
+        })
+    }
+
+    Product.associate = function(models){
+        Product.hasMany(models.Comment, {
+            as: "comentarios", 
+            foreignKey: "producto.id"
+        })
+    }
 }

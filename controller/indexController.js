@@ -46,7 +46,14 @@ const controller = {
     storeRegister: function(req, res){
         req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
         if (req.file) req.body.imagen = (req.file.path).replace('public', '');
-        db.User.create(req.body)
+        db.User.create({
+            usuario: req.body.usuario,
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            mail: req.body.mail,
+            contrasena: req.body.contrasena,
+            imagen: req.body.imagen
+        })
         .then(function(){
             res.redirect('/login');
         })

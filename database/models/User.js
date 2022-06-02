@@ -36,11 +36,26 @@ module.exports= function(sequelize,DataTypes){
         }
     }
 
+
+
     const configs={
         tableName:'usuarios',
-        timestamps:false
+        timestamps:true
     }
 
     const User= sequelize.define('User',cols, configs)
     return User;
+    User.asscociate = function(models){
+        User.hasMany(models.Product, {
+            as: "productos",
+            foreignKey: "usuario_id"
+        })
+    }
+
+    User.asscociate = function(models){
+        User.hasMany(models.Comment, {
+            as: "comentarios",
+            foreignKey: "usuario_id"
+        })
+    }
 }
