@@ -32,8 +32,7 @@ module.exports= function(sequelize,DataTypes){
         usuario_id: {
             type:DataTypes.INTEGER.UNSIGNED,
             allowNull: false
-        }
-
+        },
     }
  
     const configs={
@@ -42,21 +41,23 @@ module.exports= function(sequelize,DataTypes){
     }
 
 
-    const Product= sequelize.define('Product',cols,configs)
 
-    return Product;
+    const Product= sequelize.define('Product',cols,configs);
 
-     Product.associate = function(models){
+
+    Product.associate = function(models){
         Product.belongsTo(models.User, {
             as: "usuario",
             foreignKey: "usuario_id"
         })
-    }
+    };
 
     Product.associate = function(models){
         Product.hasMany(models.Comment, {
             as: "comentarios", 
             foreignKey: "producto.id"
         })
-    }
+    };
+
+    return Product;
 }
