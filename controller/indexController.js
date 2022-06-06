@@ -43,6 +43,7 @@ const controller = {
     register: function(req, res){
         return res.render('register');
     },
+
     storeRegister: function(req, res){
         req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
         if (req.file) req.body.imagen = (req.file.path).replace('public', '');
@@ -52,7 +53,8 @@ const controller = {
             apellido: req.body.apellido,
             mail: req.body.mail,
             contrasena: req.body.contrasena,
-            imagen: req.body.imagen
+            imagen: req.body.imagen,
+            fechaNacimiento: req.body.fechaNacimiento
         })
         .then(function(){
             res.redirect('/login');
@@ -88,9 +90,21 @@ update:function(req,res){
     productAdd: function(req, res){
         return res.render('product-add')
     },
+    storeProduct: function(req, res){
+        req.body.user_id = req.session.user.id
+        if (req.file) req.body.imagen = (req.file.path).replace('public', '');
+        db.Product.create({
+            nombre: req.body.nombre,
+            imagen: req.body.imagen,
+            descripcion: req.body.descripcion,
+            tipo: req.body.tipo,
+            fecha: req.body.fecha,
+            usuario_id: req.body.user_id
+        } ) 
+    },
     profileEdit: function(req, res){
         return res.render('profile-edit')
-    },
+    }, 
    
 };
 

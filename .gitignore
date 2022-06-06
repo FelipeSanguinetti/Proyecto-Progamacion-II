@@ -1,2 +1,4 @@
 node_modules/
 database/config/config.js
+
+public/images/uploads

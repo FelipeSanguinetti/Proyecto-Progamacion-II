@@ -33,6 +33,10 @@ module.exports= function(sequelize,DataTypes){
         },
         imagen:{
             type:DataTypes.STRING
+        },
+        fechaNacimiento:{
+            type:DataTypes.DATE,
+            allowNull:false 
         }
     }
 
