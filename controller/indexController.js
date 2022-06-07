@@ -100,7 +100,13 @@ update:function(req,res){
             tipo: req.body.tipo,
             fecha: req.body.fecha,
             usuario_id: req.body.user_id
-        } ) 
+        })
+        .then(function(){
+            res.redirect('/');
+        })
+        .catch(function(error){
+            res.send(error);
+        }) 
     },
     profileEdit: function(req, res){
         return res.render('profile-edit')
