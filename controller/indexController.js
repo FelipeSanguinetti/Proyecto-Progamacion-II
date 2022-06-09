@@ -8,10 +8,13 @@ const bcrypt=require('bcryptjs')
 
 const controller = {
     index: function(req, res){
-        return res.render('index', {
-            products: products.products,
-            comments: products.comentarios,
-    });
+        db.Product.findAll()
+        .then(function(data){
+            res.render('index', {products:data});
+        })
+        .catch(function(error){
+            res.send(error);
+        })
     },
     login: function(req, res){
         return res.render('login');
@@ -63,23 +66,23 @@ const controller = {
             res.send(error);
         })
     },
-update:function(req,res){
+    update:function(req,res){
 
-    req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
-    if (req.file) req.body.imagen = (req.file.path).replace('public', '');
-    db.User.update(req.body,{where: {id: req.session.user.id}})
-        .then(function(data){
-            if (req.file) {
-                req.session.user.imagen = req.body.imagen;
-            }
-            res.redirect('/')
-        })
+        req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
+        if (req.file) req.body.imagen = (req.file.path).replace('public', '');
+        db.User.update(req.body,{where: {id: req.session.user.id}})
+            .then(function(data){
+                if (req.file) {
+                    req.session.user.imagen = req.body.imagen;
+                }
+                res.redirect('/')
+            })
 
-        .catch(function(error){
-            res.send(error)
-        })
+            .catch(function(error){
+                res.send(error)
+            })
 
-},
+    },
 
     searchResults: function(req, res){
         return res.render('search-results', {
@@ -101,7 +104,7 @@ update:function(req,res){
             usuario_id: req.session.user.id
         })
         .then(function(){
-            res.redirect('/');
+            res.redirect('/profile/'+req.session.user.id);
         })
         .catch(function(error){
             res.send(error);
