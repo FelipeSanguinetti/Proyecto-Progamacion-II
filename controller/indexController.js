@@ -91,7 +91,6 @@ update:function(req,res){
         return res.render('product-add')
     },
     storeProduct: function(req, res){
-        req.body.user_id = req.session.user.id
         if (req.file) req.body.imagen = (req.file.path).replace('public', '');
         db.Product.create({
             nombre: req.body.nombre,
@@ -99,7 +98,7 @@ update:function(req,res){
             descripcion: req.body.descripcion,
             tipo: req.body.tipo,
             fecha: req.body.fecha,
-            usuario_id: req.body.user_id
+            usuario_id: req.session.user.id
         })
         .then(function(){
             res.redirect('/');

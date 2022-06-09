@@ -13,7 +13,7 @@ router.get('/register', controller.register);
 router.post('/register',upload.single('imagen'), controller.storeRegister);
 router.get('/search', controller.searchResults);
 router.get('/product-add', controller.productAdd);
-router.post('/product-add', controller.storeProduct);
+router.post('/product-add', upload.single('imagen'), controller.storeProduct);
 router.get('/profile-edit', controller.profileEdit);
 router.post('/profile-edit', upload.single('imagen'), controller.update);
 
