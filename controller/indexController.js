@@ -8,9 +8,9 @@ const bcrypt=require('bcryptjs')
 
 const controller = {
     index: function(req, res){
-        db.Product.findAll()
+        db.Product.findAll({ include: { all: true, nested: false } })
         .then(function(data){
-            res.render('index', {products:data});
+            res.render('index', {products: data});
         })
         .catch(function(error){
             res.send(error);
@@ -90,6 +90,7 @@ const controller = {
             comments: products.comentarios
         });
     },
+    
     productAdd: function(req, res){
         return res.render('product-add')
     },

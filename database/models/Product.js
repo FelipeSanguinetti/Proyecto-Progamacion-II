@@ -48,14 +48,15 @@ module.exports= function(sequelize,DataTypes){
     Product.associate = function(models){
         Product.belongsTo(models.User, {
             as: "usuario",
-            foreignKey: "usuario_id"
+            foreignKey: "usuario_id",
+            timeStamps: true
         })
     };
 
     Product.associate = function(models){
         Product.hasMany(models.Comment, {
             as: "comentarios", 
-            foreignKey: "producto.id"
+            foreignKey: "producto_id"
         })
     };
 

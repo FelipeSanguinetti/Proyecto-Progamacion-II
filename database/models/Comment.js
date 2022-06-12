@@ -6,7 +6,7 @@ module.exports= function(sequelize,DataTypes){
 
     const cols={
         id:{
-            autoIncremenyt:true,
+            autoIncrement:true,
             primaryKey:true,
             type:DataTypes.INTEGER.UNSIGNED,
             allowNull: false
@@ -30,7 +30,6 @@ module.exports= function(sequelize,DataTypes){
     }
 
     const configs={
-        
         tableName:'comentarios',
         timestamps:false
     }
