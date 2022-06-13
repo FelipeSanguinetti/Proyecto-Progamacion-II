@@ -8,8 +8,9 @@ const bcrypt=require('bcryptjs')
 
 const controller = {
     index: function(req, res){
-        db.Product.findAll({ include: { all: true, nested: false } })
+        db.Product.findAll({ include: { all: true, nested: true } })
         .then(function(data){
+            console.log(data);
             res.render('index', {products: data});
         })
         .catch(function(error){
@@ -66,23 +67,6 @@ const controller = {
             res.send(error);
         })
     },
-    update:function(req,res){
-
-        req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
-        if (req.file) req.body.imagen = (req.file.path).replace('public', '');
-        db.User.update(req.body,{where: {id: req.session.user.id}})
-            .then(function(data){
-                if (req.file) {
-                    req.session.user.imagen = req.body.imagen;
-                }
-                res.redirect('/')
-            })
-
-            .catch(function(error){
-                res.send(error)
-            })
-
-    },
 
     searchResults: function(req, res){
         return res.render('search-results', {
@@ -110,11 +94,7 @@ const controller = {
         .catch(function(error){
             res.send(error);
         }) 
-    },
-    profileEdit: function(req, res){
-        return res.render('profile-edit')
-    }, 
-   
+    }
 };
 
 module.exports = controller;

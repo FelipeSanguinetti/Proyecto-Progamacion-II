@@ -41,16 +41,13 @@ module.exports= function(sequelize,DataTypes){
         Comment.belongsTo(models.User, {
             as: "usuario",
             foreignKey: "usuario_id"
-        });
-    };
-
-    Comment.associate = function(models){
+        }),
         Comment.belongsTo(models.Product, {
             as: "producto",
             foreignKey: "producto_id"
         })
-    }
-
+    };
+ 
     return Comment;
 
 }

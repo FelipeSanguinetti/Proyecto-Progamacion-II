@@ -28,7 +28,7 @@
 						</figure>
 						<article class="product-box_data">
 								<h2><%=products[i].nombre%></h2>
-								<p><%= products[i].usuario /*.usuario - si esto no esta comentado se crashea la pagina */ %> </p>
+								<p><%= products[i].usuario.usuario%> </p>
 								<p><%= products[i].descripcion %> </p>
 								<p>Comentarios: <%= products[i].comentarios.length %> </p>
 						</article>
@@ -57,7 +57,7 @@
 							</figure>
 							<article class="product-box_data">
 								<h2><%=products[i].nombre%></h2>
-								<p><%= products[i].usuario %> </p>
+								<p><%= products[i].usuario.usuario %> </p>
 								<p><%= products[i].descripcion %> </p>
 								<p>Comentarios: <%= products[i].comentarios.length %> </p>
 							</article>

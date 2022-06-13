@@ -15,6 +15,10 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
+					<div class="nombre-imagen-usuario">
+					<a href="/profile/<%= product.usuario.id %> "><img class="foto-circulo" src="<%= product.usuario.imagen %>" alt=""></a>
+					<a href="/profile/<%= product.usuario.id %> "><h2 class="main-title-products"><%= product.usuario.usuario %> </h1></a>
+					</div>
 					<img src="<%= product.imagen %>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
 						<%= product.descripcion %>
@@ -26,10 +30,10 @@
 					<section class="comments">
 						<% for( let i = 0; i < product.comentarios.length; i++ ) { %>
 							<article>
-								<img src="<%= product.comentarios[i].usuario/* .imagen */ %>" alt="">
+								<img src="<%= product.comentarios[i].usuario.imagen %>" alt="">
 								<div class="data">
 									<p class="user">
-									<strong> <a href="/profile"><%= product.comentarios[i].usuario/* .usuario */ %> : </a> </strong>
+									<strong> <a href="/profile/<%= product.comentarios[i].usuario.id %> "><%= product.comentarios[i].usuario.usuario %> : </a> </strong>
 									<%= product.comentarios[i].contenido %> 
 									</p>
 								</div>

@@ -208,6 +208,20 @@ hr {
   font-family: 'Palanquin', sans-serif;
 }
 
+.nombre-imagen-usuario {
+  margin-bottom: 7.5px;
+  padding-bottom: 7.5px;
+  display: flex;
+}
+
+.foto-circulo{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 20px
+  
+}
+
 .products-title {
   font-size: 4.5em;
   font-weight: 600;
@@ -342,6 +356,12 @@ hr {
 }
 
 /*====== Product Detail ======*/
+.main-title-products{
+  font-size: 25px;
+  margin-bottom: 10px;
+  padding: 0px 15px 15px 25px;
+
+}
 .product-detail {
   background-color: #ffffff;
   border-radius: 8px;
@@ -359,7 +379,6 @@ hr {
 .product-detail-info {
   border-right: 1px solid var(--light-gray);
   padding: 15px;
-  text-align: center;
   /* height: 100%; */
 }
 
@@ -373,8 +392,9 @@ hr {
   padding: 25px 15px 15px 25px;
   font-size: 2.5em;
   line-height: 1.5;
-  text-align: center;
   font-family: 'Oswald',sans-serif;
+  margin: auto;
+  text-align: center;
 }
 
 .product-detail-editar {
