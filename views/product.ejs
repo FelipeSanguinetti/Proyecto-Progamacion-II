@@ -44,6 +44,19 @@
 						<input class="form-input" type="text" value="" name="contenido" id="contenido" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
+					<% if (locals.user && user.id == product.usuario_id) { %>
+						<form action="/product/id/<%= product.id %>/delete" method="POST">
+						  <input class="btn btn-danger" type="submit" value="Borrar">
+						</form>
+					  <% } %>
+					  
+					  <% if (locals.user && user.id == product.usuario_id) { %>
+						<form action="/product/id/<%= product.id %>/edit" method="get">
+						  <input class="btn btn-danger" type="submit" value="Editar">
+						</form>
+					  <% } %>
+
+					  
 					<hr>
 				</div>
 			</div>

@@ -17,6 +17,31 @@ const controller = {
             res.send(error);
         })
     },
+    delete: function(req, res) {
+        
+        if (!req.session.user ) {
+            throw Error('Not authorized.')
+        }
+        db.Product.destroy({ where: { id: req.params.id } })
+            .then(function() {
+                res.redirect('/profile/me')
+            })
+            .catch(function(error) {
+                res.send(error);
+            })
+    },
+    edit: function(req, res) {
+        if (!req.session.user ) {
+            throw Error('Not authorized.')
+        }
+        db.Product.findByPk(req.params.id)
+            .then(function (product) {
+                res.render('product-edit', { product });
+            })
+            .catch(function (error) {
+                res.send(error);
+            })
+    },
     storeComment: function(req, res){
         if(!req.session.user){
             throw Error('Tenés que estar logueado para comentar una publicación')

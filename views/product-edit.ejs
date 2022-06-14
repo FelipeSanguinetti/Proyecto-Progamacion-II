@@ -1,0 +1,40 @@
+<% if (locals.user != null) { %>
+	<%- include('./partials/headerLogueado') %>
+<% } else { %>
+	<%- include('./partials/header') %>
+<% } %>
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Editar productos</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			<form method="POST" class="product-add-form" enctype="multipart/form-data">
+				<div class="mb-3">
+					<label for="nombre" class="form-label">Nombre del producto</label>
+					<input type="text" class="form-control-reg" name="nombre" id="nombre">
+				</div>
+				<div class="mb-3 form-picture">
+					<label class="form-label" for="imagen">Agregá una imagen</label>
+					<input type="file" class="form-control-reg" name="imagen" id="imagen">
+				</div>
+				<div class="mb-3">
+					<label for="descripcion" class="form-label">Descripción</label>
+					<input type="text" class="form-control-reg" name="descripcion" id="descripcion">
+				</div>
+				<div>
+				<label for="tipo" class="form-label">Tipo de producto: </label>
+				<select class="mb-3 form-select-me" name="tipo" id="tipo">
+					<option value="pizza">Pizza</option>
+					<option value="pasta">Pasta</option>
+				</select>
+				</div>
+				<div class="mb-3 form-date">
+					<label class="form-label" for="fecha">Fecha de carga</label>
+					<input type="date" class="form-control-reg" name="fecha" id="fecha">
+				</div>
+				<button type="submit" class="btn btn-primary">Subir</button>
+			</form>
+<%- include('./partials/footer') %>

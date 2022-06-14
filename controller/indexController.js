@@ -78,6 +78,7 @@ const controller = {
     productAdd: function(req, res){
         return res.render('product-add')
     },
+    
     storeProduct: function(req, res){
         if (req.file) req.body.imagen = (req.file.path).replace('public', '');
         db.Product.create({

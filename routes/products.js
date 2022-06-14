@@ -6,5 +6,7 @@ var controller = require('../controller/productController')
 
 router.get('/id/:id', controller.product);
 router.post('/id/:id', controller.storeComment);
+router.post('/id/:id/delete', controller.delete)
+router.get('/id/:id/edit', controller.edit)
 
 module.exports = router;
