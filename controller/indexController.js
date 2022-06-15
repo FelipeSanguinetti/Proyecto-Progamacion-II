@@ -82,7 +82,7 @@ const controller = {
             include: { all: true, nested: true }
         })
         .then(function(data){
-            res.render('search-results', {products: data})
+            res.render('search-results', {products:data})
         })
         .catch(function(error){
             res.send(error)

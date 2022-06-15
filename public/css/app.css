@@ -222,6 +222,10 @@ hr {
   
 }
 
+  .contenedorPP {
+  justify-content: space-between;
+}  
+
 .products-title {
   font-size: 4.5em;
   font-weight: 600;
@@ -411,6 +415,22 @@ hr {
 
 .product-detail-editar a{
   font-family: 'Palanquin', sans-serif;
+}
+
+.contenedorP {
+  padding: 10px 10px 5px 20px;
+  display: flex;
+  
+}
+
+.botones-producto {
+  /* padding: 10px 10px 5px 20px; */
+  border: none;
+  background-color: #ebebeb;;
+}
+
+.div-botonesP {
+  display: flex;
 }
 
 .product-detail-price {

@@ -6,11 +6,25 @@
 
 	<!-- product detail -->
 	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
+		<div class="d-flex align-items-center contenedorPP">
+			<div class="div-botonesP">
 			<h2 class="products-title"><%= product.nombre %></h2> 
-			<p class="product-detail-editar">
-				<a href="/product-add">Editar</a>
-			</p>
+			
+			<% if (locals.user && user.id == product.usuario_id) { %>
+			
+				<form action="/product/id/<%= product.id %>/edit" method="get" class="contenedorP">
+					<button type="submit" class="botones-producto"><img class="pizza-header pastaFoto" src="/images/edit.png" alt="Editar"></button>
+				</form>
+			</div>
+				<form action="/product/id/<%= product.id %>/delete" method="POST" class="contenedorP">
+					<button type="submit" class="botones-producto"><img class="pizza-header pastaFoto" src="/images/delete.png" alt="Borrar"></button>
+				</form>
+			
+			<% } else { %>
+			</div> 
+			<% } %> 
+			
+			
 		</div>
 		<div class="product-detail">
 			<div class="row">
@@ -43,19 +57,6 @@
 						<input class="form-input" type="text" value="" name="contenido" id="contenido" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
-					<% if (locals.user && user.id == product.usuario_id) { %>
-						<form action="/product/id/<%= product.id %>/delete" method="POST">
-						  <input class="btn btn-danger" type="submit" value="Borrar">
-						</form>
-					  <% } %>
-					  
-					  <% if (locals.user && user.id == product.usuario_id) { %>
-						<form action="/product/id/<%= product.id %>/edit" method="get">
-						  <input class="btn btn-danger" type="submit" value="Editar">
-						</form>
-					  <% } %>
-
-					  
 					<hr>
 				</div>
 			</div>
