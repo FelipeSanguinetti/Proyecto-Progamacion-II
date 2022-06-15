@@ -6,7 +6,7 @@ var upload= multer({dest:'public/images/uploads'})
 
 router.get('/me', controller.myProfile);
 router.get('/me/edit', controller.edit);
-router.post('/me/edit', upload.single('imagen'), controller.update)
+router.post('/me/edit', upload.single('imagen'), controller.update);
 
 router.get('/:id', controller.profile);
 

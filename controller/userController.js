@@ -25,6 +25,7 @@ const controller = {
         })
     },
     profile: function(req, res){
+        if(req.session.user.id == req.params.id){res.redirect('/profile/me')}
         db.User.findByPk(req.params.id, {include: { all: true, nested: false }})
         .then(function(data){
             db.Product.findAll({
@@ -42,14 +43,14 @@ const controller = {
         })
     },
 
-    edit: function(req,res){
-            if(req.session.user && req.session.user.id == req.params.id){
-                return res.render('profile-edit');
-            } else{
-                res.redirect('/')
-            }
+    edit: function(req, res){
+        if(req.session.user){
+            res.render('profile-edit');
+        } else{
+            res.redirect('/')
+        } 
     },
-    update:function(req,res){
+    update:function(req, res){
 
         req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
         if (req.file) req.body.imagen = (req.file.path).replace('public', '');

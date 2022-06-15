@@ -8,7 +8,10 @@ const bcrypt=require('bcryptjs')
 
 const controller = {
     index: function(req, res){
-        db.Product.findAll({ include: { all: true, nested: true } })
+        db.Product.findAll({
+            include: { all: true, nested: true },
+            order: [ ['fecha', 'DESC']],
+        })
         .then(function(data){
             console.log(data);
             res.render('index', {products: data});
@@ -67,12 +70,23 @@ const controller = {
             res.send(error);
         })
     },
-
     searchResults: function(req, res){
-        return res.render('search-results', {
-            products: products.products,
-            comments: products.comentarios
-        });
+        db.Product.findAll({
+            where: {
+                [op.or]: [
+                    {nombre: {[op.like]: '%' + req.query.search + '%'}},
+                    {descripcion: {[op.like]: '%' + req.query.search + '%'}},
+                    {tipo: {[op.like]: '%' + req.query.search + '%'}}
+                ]
+            },
+            include: { all: true, nested: true }
+        })
+        .then(function(data){
+            res.render('search-results', {products: data})
+        })
+        .catch(function(error){
+            res.send(error)
+        })
     },
     
     productAdd: function(req, res){

@@ -10,17 +10,22 @@
 			<div class="col-12">
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
-		<section class="product-box" id="results-section">
-				<a href="/product/id/<%= products[1].id %> ">
-					<figure class="product-box_image">
-						<img src="<%=products[1].imagen%>" alt="cafetera moulinex">
-					</figure>
-					<article class="product-box_data">
-						<h2> <%=products[1].nombre%></h2>
-						<p><%= products[1].descripcion %> </p>
-						<p>Comentarios: <%= comments.length %> </p>
-					</article>
-				</a>
-			</section> 
+			<% for (let i=0; i<products.length; i++){ %> 
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="/product/id/<%= products[i].id %> ">
+							<figure class="product-box_image">
+								<img src="<%=products[i].imagen%>" alt="<%=products[i].tipo%> <%=products[i].nombre %> ">
+							</figure>
+							<article class="product-box_data">
+									<h2><%=products[i].nombre%></h2>
+									<p><%= products[i].usuario.usuario%> </p>
+									<p><%= products[i].descripcion %> </p>
+									<p>Comentarios: <%= products[i].comentarios.length %> </p>
+							</article>
+						</a>
+					</section>
+				</div>
+			<%} %>
 
 <%- include('./partials/footer') %>

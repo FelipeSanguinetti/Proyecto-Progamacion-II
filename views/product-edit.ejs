@@ -14,7 +14,7 @@
 			<form method="POST" class="product-add-form" enctype="multipart/form-data">
 				<div class="mb-3">
 					<label for="nombre" class="form-label">Nombre del producto</label>
-					<input type="text" class="form-control-reg" name="nombre" id="nombre">
+					<input type="text" class="form-control-reg" name="nombre" id="nombre" value="<%= product.nombre %>">
 				</div>
 				<div class="mb-3 form-picture">
 					<label class="form-label" for="imagen">Agregá una imagen</label>
@@ -22,7 +22,7 @@
 				</div>
 				<div class="mb-3">
 					<label for="descripcion" class="form-label">Descripción</label>
-					<input type="text" class="form-control-reg" name="descripcion" id="descripcion">
+					<input type="text" class="form-control-reg" name="descripcion" id="descripcion" value="<%= product.descripcion %>">
 				</div>
 				<div>
 				<label for="tipo" class="form-label">Tipo de producto: </label>
@@ -33,7 +33,7 @@
 				</div>
 				<div class="mb-3 form-date">
 					<label class="form-label" for="fecha">Fecha de carga</label>
-					<input type="date" class="form-control-reg" name="fecha" id="fecha">
+					<input type="date" class="form-control-reg" name="fecha" id="fecha" value="<%= product.fecha %>">
 				</div>
 				<button type="submit" class="btn btn-primary">Subir</button>
 			</form>
