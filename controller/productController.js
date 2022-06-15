@@ -9,7 +9,7 @@ const controller = {
     product: function(req, res){
         /* comments: products.comentarios */
 
-        db.Product.findByPk(req.params.id , { include: { all: true, nested: true } })
+        db.Product.findByPk(req.params.id , { include: { all: true, nested: true } }, {order: [ [db.Comment.createdAt, 'DESC']]},)
         .then(function(data){
             res.render('product', {product: data});
         })
