@@ -51,9 +51,22 @@ const controller = {
         return res.render('register');
     },
 
-    storeRegister: function(req, res){
+    storeRegister: async function(req, res){
+        
+        try {
+        if (!req.body.usuario) { throw Error('Debes proveer un usuario.') }
+        if (!req.body.mail) { throw Error('Debes proveer un email.') }
+        if (req.body.contrasena.length < 3) { throw Error('Tu contraseña debe ser mayor a 3 caracteres.') }
+        const user = await db.User.findOne({ where: { mail: req.body.mail } })
+        const usuario = await db.User.findOne({ where: { usuario: req.body.usuario} })
+        if (user) { throw Error('Ya existe un usuario con ese email.') }
+        if (usuario) { throw Error('Ya existe ese nombre de usuario.') }
+    } catch (err) {
+        return res.render('register', { error: err.message });
+    }
         req.body.contrasena=bcrypt.hashSync(req.body.contrasena, 10)
         if (req.file) req.body.imagen = (req.file.path).replace('public', '');
+        
         db.User.create({
             usuario: req.body.usuario,
             nombre: req.body.nombre,
@@ -64,6 +77,7 @@ const controller = {
             fechaNacimiento: req.body.fechaNacimiento
         })
         .then(function(){
+            
             res.redirect('/login');
         })
         .catch(function(error){

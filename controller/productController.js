@@ -45,12 +45,16 @@ const controller = {
     storeComment: function(req, res){
         if(!req.session.user){
             throw Error('Tenés que estar logueado para comentar una publicación')
+        
+        
         }
         req.body.usuario_id = req.session.user.id;
         req.body.producto_id = req.params.id;
         req.body.created_at = new Date();
         db.Comment.create(req.body)
             .then(function() {
+
+                
                 res.redirect(req.params.id)
             })
             .catch(function(error) {
