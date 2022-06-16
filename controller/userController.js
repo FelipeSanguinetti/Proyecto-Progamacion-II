@@ -25,7 +25,8 @@ const controller = {
         })
     },
     profile: function(req, res){
-        if(req.session.user.id == req.params.id){res.redirect('/profile/me')}
+        if(req.session.user){
+        if(req.session.user.id == req.params.id){res.redirect('/profile/me')}}
         db.User.findByPk(req.params.id, {include: { all: true, nested: false }})
         .then(function(data){
             db.Product.findAll({
