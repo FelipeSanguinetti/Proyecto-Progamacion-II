@@ -12,6 +12,11 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<form method="POST" class="product-add-form" enctype="multipart/form-data">
+				<% if (locals.error) { %>
+					<div class="mb-3 error" role="alert">
+						<%=error %>
+					</div>
+				<% } %>
 				<div class="mb-3">
 					<label for="nombre" class="form-label">Nombre del producto</label>
 					<input type="text" class="form-control-reg" name="nombre" id="nombre" value="<%= product.nombre %>">
@@ -27,8 +32,17 @@
 				<div>
 				<label for="tipo" class="form-label">Tipo de producto: </label>
 				<select class="mb-3 form-select-me" name="tipo" id="tipo">
-					<option value="pizza">Pizza</option>
-					<option value="pasta">Pasta</option>
+					<option value="pizza"
+					<% if (product.tipo == 'pizza') { %>
+					 selected
+					<% } %>
+					>Pizza</option>
+
+					<option value="pasta"
+					<% if (product.tipo == 'pasta') { %>
+						selected
+					<% } %>
+					>Pasta</option>
 				</select>
 				</div>
 				<div class="mb-3 form-date">

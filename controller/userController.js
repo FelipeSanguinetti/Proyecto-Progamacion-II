@@ -17,7 +17,7 @@ const controller = {
                 include: { all: true, nested: false }
             }). then(function(products){
                 console.log(products);
-                res.render('profile', {user: data, products});
+                res.render('profile', {userP: data, products});
             })
         })
         .catch(function(error){
@@ -36,7 +36,7 @@ const controller = {
                 include: { all: true, nested: false }
             }). then(function(products){
                 console.log(products);
-                res.render('profile', {user: data, products});
+                res.render('profile', {userP: data, products});
             })
         })
         .catch(function(error){

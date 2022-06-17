@@ -126,14 +126,15 @@ const controller = {
     
     productAdd: function(req, res){
         if (req.session.user == undefined) {
-            return res.redirect ('/')
+            return (res.redirect ('/login'));
         } else {
-        return res.render('product-add');
+            return res.render('product-add');
         }
     },
     
     storeProduct: function(req, res){
         try {
+            if (!req.session.user) {throw Error ('Tenés que iniciar sesión.')}
             if (!req.body.nombre) {throw Error ('Debes proveer el nombre del producto.')}    
             if (!req.file) {throw Error ('Debes seleccionar una imagen.')}    
             if (!req.body.descripcion) { throw Error('Debes proveer una descripcion del producto') }
