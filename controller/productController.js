@@ -43,23 +43,25 @@ const controller = {
             })
     },
     storeComment: function(req, res){
-        if(!req.session.user){
-            throw Error('Tenés que estar logueado para comentar una publicación')
-        
-        
+        try{
+            if(!req.session.user){throw Error('Tenés que estar logueado para comentar una publicación.')}
+        }catch (err) {
+            return res.render('product', { error: err.message });
         }
+        if (req.session.user) {
         req.body.usuario_id = req.session.user.id;
         req.body.producto_id = req.params.id;
         req.body.created_at = new Date();
         db.Comment.create(req.body)
             .then(function() {
 
-                
                 res.redirect(req.params.id)
             })
             .catch(function(error) {
                 res.send(error);
             })
+        }
+        
     }
 
 

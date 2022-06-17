@@ -6,19 +6,23 @@
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">
-		<% if (locals.error) { %>
-			<div class="alert alert-danger" role="alert">
-				<%=error %>
-			</div>
-
-		<% } %>
+	
 
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Registrate</h2>
 			</div>
+
+			
 			<!-- Show the "ultimos" products -->
 			<form method="POST" class="register-form" enctype="multipart/form-data">
+
+				<% if (locals.error) { %>
+					<div class="mb-3 error" role="alert">
+						<%=error %>
+					</div>
+				<% } %>
+
 				<div class="mb-3">
 					<label for="nombre" class="form-label">Nombre</label>
 					<input type="text" class="form-control-reg" name="nombre" id="nombre">

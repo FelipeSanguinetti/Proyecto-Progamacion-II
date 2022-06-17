@@ -21,7 +21,11 @@ const controller = {
         })
     },
     login: function(req, res){
+        if (req.session.user != undefined) {
+            return res.redirect ('/')
+        } else {
         return res.render('login');
+        }
     },
     
     access: function(req, res, next) {
@@ -34,7 +38,7 @@ const controller = {
                 }})
                    
             .then(function(user) {
-                if (!user) throw Error('User not found.')
+                if (!user) throw Error('No existe el usuario ingresado.')
                 if (hasher.compareSync(req.body.contrasena, user.contrasena)) {
                     req.session.user = user;
                     if (req.body.recordarme){
@@ -42,11 +46,11 @@ const controller = {
                     }
                     res.redirect('/');
                 } else {
-                    throw Error('Invalid credentials.')
+                    throw Error('Contraseña incorrecta.')
                 }
             })
             .catch(function (err) {
-                next(err)
+                return res.render('login', { error: err.message });
             })
     },
     logout: function(req, res){
@@ -55,19 +59,29 @@ const controller = {
         res.redirect('/');
     },
     register: function(req, res){
+        if (req.session.user != undefined) {
+            return res.redirect ('/')
+        } else {
         return res.render('register');
+        }
     },
 
     storeRegister: async function(req, res){
         
         try {
+        if (!req.body.nombre) {throw Error ('Debes proveer un nombre.')}    
+        if (!req.body.apellido) {throw Error ('Debes proveer un apellido.')}    
         if (!req.body.usuario) { throw Error('Debes proveer un usuario.') }
-        if (!req.body.mail) { throw Error('Debes proveer un email.') }
-        if (req.body.contrasena.length < 3) { throw Error('Tu contraseña debe ser mayor a 3 caracteres.') }
-        const user = await db.User.findOne({ where: { mail: req.body.mail } })
         const usuario = await db.User.findOne({ where: { usuario: req.body.usuario} })
-        if (user) { throw Error('Ya existe un usuario con ese email.') }
         if (usuario) { throw Error('Ya existe ese nombre de usuario.') }
+        if (!req.body.fechaNacimiento) { throw Error('Debes seleccionar una fecha de nacimiento.') }
+        if (!req.body.mail) { throw Error('Debes proveer un email.') }
+        const user = await db.User.findOne({ where: { mail: req.body.mail } })
+        if (user) { throw Error('Ya existe un usuario con ese email.') }
+        if (req.body.contrasena.length < 3) { throw Error('Tu contraseña debe ser mayor a 3 caracteres.') }
+        if (!req.file){req.body.imagen = '/images/user.png'}
+        
+    
     } catch (err) {
         return res.render('register', { error: err.message });
     }
@@ -111,10 +125,23 @@ const controller = {
     },
     
     productAdd: function(req, res){
-        return res.render('product-add')
+        if (req.session.user == undefined) {
+            return res.redirect ('/')
+        } else {
+        return res.render('product-add');
+        }
     },
     
     storeProduct: function(req, res){
+        try {
+            if (!req.body.nombre) {throw Error ('Debes proveer el nombre del producto.')}    
+            if (!req.file) {throw Error ('Debes seleccionar una imagen.')}    
+            if (!req.body.descripcion) { throw Error('Debes proveer una descripcion del producto') }
+            if (!req.body.fechaCarga) { throw Error('Debes seleccionar la fecha de carga.') }
+           
+        } catch (err) {
+            return res.render('product-add', { error: err.message });
+        }
         if (req.file) req.body.imagen = (req.file.path).replace('public', '');
         db.Product.create({
             nombre: req.body.nombre,

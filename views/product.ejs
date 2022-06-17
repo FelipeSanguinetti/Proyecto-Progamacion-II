@@ -54,6 +54,11 @@
 						<% } %>
 					</section>
 					<form class="form" method="POST">
+						<% if (locals.error) { %>
+							<div class="mb-3 error" role="alert">
+								<%=error %>
+							</div>
+						<% } %>
 						<input class="form-input" type="text" value="" name="contenido" id="contenido" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
