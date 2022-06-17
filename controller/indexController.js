@@ -23,9 +23,16 @@ const controller = {
     login: function(req, res){
         return res.render('login');
     },
-
+    
     access: function(req, res, next) {
-        db.User.findOne({ where: { usuario: req.body.usuario }})
+        
+        db.User.findOne({
+            where: {
+                [op.or]: [
+                    {usuario:req.body.usuario},
+                    {mail: req.body.usuario}]
+                }})
+                   
             .then(function(user) {
                 if (!user) throw Error('User not found.')
                 if (hasher.compareSync(req.body.contrasena, user.contrasena)) {
