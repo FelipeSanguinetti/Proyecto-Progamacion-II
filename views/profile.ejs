@@ -13,9 +13,11 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"> <%= userP.usuario %> 
+						<% if (locals.user && user.id == userP.id) { %>
 						<a href="me/edit">
 							<i class="fas fa-cog"></i>
 						</a>
+						<% } %> 
 					</h1>
 				</div>
 				<div>

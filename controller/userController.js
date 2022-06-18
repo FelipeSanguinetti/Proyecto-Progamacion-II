@@ -46,6 +46,7 @@ const controller = {
 
     edit: function(req, res){
         if(req.session.user){
+            if(req.params.id != req.session.user.id){res.redirect('/')}
             res.render('profile-edit');
         } else{
             res.redirect('/')

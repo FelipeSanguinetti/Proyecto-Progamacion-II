@@ -74,7 +74,7 @@ const controller = {
         try{
             if(!req.session.user){throw Error('Tenés que estar logueado para comentar una publicación.')}
         }catch (err) {
-            res.redirect('/login', {error: err.message})
+            res.redirect('/login')
         }
         if(req.session.user){
         req.body.usuario_id = req.session.user.id;
