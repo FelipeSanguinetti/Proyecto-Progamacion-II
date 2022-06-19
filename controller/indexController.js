@@ -138,7 +138,7 @@ const controller = {
             if (!req.body.nombre) {throw Error ('Debes proveer el nombre del producto.')}    
             if (!req.file) {throw Error ('Debes seleccionar una imagen.')}    
             if (!req.body.descripcion) { throw Error('Debes proveer una descripcion del producto') }
-            if (!req.body.fechaCarga) { throw Error('Debes seleccionar la fecha de carga.') }
+            if (!req.body.fecha) { throw Error('Debes seleccionar la fecha de carga.') }
            
         } catch (err) {
             return res.render('product-add', { error: err.message });
