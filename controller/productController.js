@@ -20,6 +20,9 @@ const controller = {
     },
     delete: function(req, res) {
         
+        if(db.Product.findByPk(req.params.id).usuario_id != req.session.user.id){
+            throw Error ('Este producto no te pertenece')
+        }
         if (!req.session.user ) {
             throw Error('Not authorized.')
         }
