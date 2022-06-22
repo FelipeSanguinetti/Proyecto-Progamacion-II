@@ -10,6 +10,7 @@ CREATE TABLE usuarios (
     mail VARCHAR(255) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
     imagen VARCHAR(255) NOT NULL,
+    fechaNacimiento DATE NOT NULL,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME
 );
@@ -42,7 +43,7 @@ CREATE TABLE comentarios (
 
 INSERT INTO usuarios (id, usuario, nombre, apellido, mail, contrasena, fechaNacimiento, imagen)
 VALUES (10, 'mariavaccario', 'Maria', 'Vaccario', 'mariavaccario@gmail.com', '$2a$10$v1CNm22xutmYQbtVzhd5J.ueFMHdpNz3NbHJT1FnRI.5celW12l/e', '2002-09-11', '/images/uploads/c214ec3e9e78db9ad39fa00a3e8d9c52'),
-(11, 'simondeabelleyra', 'Simon', 'De Abelleyra', 'sdeabelleyra@gmail.com', '$2a$10$.pLRUQjM3yQZ5S73a6O5oeMWhjQEzlMHAmLX6gZT1iaPkY/g0WBwK', '2003-05-23', '/images/uploads/67c4b2855eb4ab59d955bd45c71c1f7b'),
+(11, 'simondeabelleyra', 'Simon', 'de Abelleyra', 'sdeabelleyra@gmail.com', '$2a$10$.pLRUQjM3yQZ5S73a6O5oeMWhjQEzlMHAmLX6gZT1iaPkY/g0WBwK', '2003-05-23', '/images/uploads/67c4b2855eb4ab59d955bd45c71c1f7b'),
 (12, 'felipesanguinetti', 'Felipe', 'Sanguinetti', 'ssanguinetti@gmail.com', '$2a$10$GLdB7qBpZGOfwqgVbbxS4OOdCXHYaU8zwkFCBb96cCj/03RTeoVnC', '2002-10-27', '/images/uploads/19d4399231ae400f9493c34ea066631b');
 
 INSERT INTO productos(tipo, imagen, nombre, descripcion, fecha, usuario_id)
