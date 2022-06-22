@@ -18,14 +18,18 @@ const controller = {
             res.send(error);
         })
     },
-    delete: function(req, res) {
+    delete: async function(req, res) {
         
-        if(db.Product.findByPk(req.params.id).usuario_id != req.session.user.id){
-            throw Error ('Este producto no te pertenece')
-        }
+        try {
+        const producto=await db.Product.findByPk(req.params.id)
+        if(producto.usuario_id != req.session.user.id){
+            throw Error ('Este producto no te pertenece')}
         if (!req.session.user ) {
-            throw Error('Not authorized.')
+            throw Error('Not authorized.')}
+        } catch (err) {
+            return res.send( {error: err.message});
         }
+    
         db.Product.destroy({ where: { id: req.params.id } })
             .then(function() {
                 res.redirect('/profile/me')
@@ -92,7 +96,6 @@ const controller = {
             })
         }
     }
-
 
 };
 
