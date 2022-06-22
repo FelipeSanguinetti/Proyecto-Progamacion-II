@@ -30,7 +30,7 @@ const controller = {
         if (!req.session.user ) {
             throw Error('Not authorized.')}
         } catch (err) {
-            return res.send( {error: err.message});
+            return res.send(err.message);
         }
     
         db.Product.destroy({ where: { id: req.params.id } })
@@ -56,7 +56,6 @@ const controller = {
     },
     update: async function(req, res){
         try {
-            /* if(db.Product.findByPk(req.params.id).usuario_id != req.session.user.id){throw Error ('Este producto no te pertenece')} */
             const producto = await db.Product.findByPk(req.params.id)
             if(producto.usuario_id != req.session.user.id){throw Error('Este producto no te pertenece')}
             if (!req.session.user) {throw Error ('Tenés que iniciar sesión.')}
