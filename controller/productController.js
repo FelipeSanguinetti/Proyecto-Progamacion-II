@@ -10,7 +10,10 @@ const controller = {
     product: function(req, res){
         /* comments: products.comentarios */
 
-        db.Product.findByPk(req.params.id , { include: { all: true, nested: true } }, {order: [ [db.Comment.createdAt, 'DESC']]},)
+        db.Product.findByPk(req.params.id , {
+             include: { all: true, nested: true } , 
+             order: [ ['comentarios', 'created_at', 'DESC']],
+            })
         .then(function(data){
             res.render('product', {product: data});
         })
@@ -51,10 +54,11 @@ const controller = {
                 res.send(error);
             })
     },
-    update: function(req, res){
+    update: async function(req, res){
         try {
-            if(db.Product.findByPk(req.params.id).usuario_id != req.session.user.id){throw Error ('Este producto no te pertenece')}
-
+            /* if(db.Product.findByPk(req.params.id).usuario_id != req.session.user.id){throw Error ('Este producto no te pertenece')} */
+            const producto = await db.Product.findByPk(req.params.id)
+            if(producto.usuario_id != req.session.user.id){throw Error('Este producto no te pertenece')}
             if (!req.session.user) {throw Error ('Tenés que iniciar sesión.')}
             if (!req.body.nombre) {throw Error ('Debes proveer el nombre del producto.')}       
             if (!req.body.descripcion) { throw Error('Debes proveer una descripcion del producto') }
@@ -72,6 +76,9 @@ const controller = {
         db.Product.update(req.body, {where: {id: req.params.id}})
         .then(function(){
             res.redirect('/profile/me')
+        })
+        .catch(function(error){
+            res.send(error)
         })
         .catch(function(error){
             res.send(error)
