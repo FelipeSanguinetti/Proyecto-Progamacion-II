@@ -10,8 +10,8 @@ CREATE TABLE usuarios (
     mail VARCHAR(255) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
     imagen VARCHAR(255) NOT NULL,
-    createdAt TIMESTAMP,
-    updatedAt TIMESTAMP
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME
 );
 
 CREATE TABLE productos (
@@ -21,8 +21,8 @@ CREATE TABLE productos (
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     fecha DATE NOT NULL,
-    createdAt TIMESTAMP,
-    updatedAt TIMESTAMP,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME,
     usuario_id INT UNSIGNED NOT NULL,
     
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
@@ -34,6 +34,7 @@ CREATE TABLE comentarios (
     contenido TEXT NOT NULL,
     usuario_id INT UNSIGNED NOT NULL,
     producto_id INT UNSIGNED NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     
     FOREIGN KEY (producto_id) REFERENCES productos(id) ON DELETE CASCADE,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
@@ -52,10 +53,10 @@ VALUES('pizza', '/images/products/cabutia azul.png', 'Cabutia Azul', 'Pizza napo
 ('pizza', '/images/products/peperoni.png', 'Pepperoni', 'Pizza napoletana de fior di latte y pepperoni. El pepperoni generalmente está hecho de una mezcla de carne de cerdo y carne de res.', '2019-09-11', 12),
 ('pizza', '/images/products/margerita.png', 'Margherita', 'Pizza napoletana con fior di latte, tomate cherry y albahaca. La clasica.', '2019-09-21', 12),
 ('pizza', '/images/products/mpicante.png', 'Margherita Picante', 'Pizza napoletana picante con fior di latte, tomate cherry, albahaca y `Nduja', '2018-11-30', 11),
-('pizza', '/images/products/guanciale.png', 'Guanciale', 'Pizza napoletana con fior di latte y guanciale.', '2020-02-10', 6),
-('pasta', '/images/products/garganelli.png', 'Garganelli', 'Garganelli all’ uovo con pomodoro de ‘Nduja', '2021-11-15', 7),
+('pizza', '/images/products/guanciale.png', 'Guanciale', 'Pizza napoletana con fior di latte y guanciale.', '2020-02-10', 10),
+('pasta', '/images/products/garganelli.png', 'Garganelli', 'Garganelli all’ uovo con pomodoro de ‘Nduja', '2021-11-15', 10),
 ('pasta', '/images/products/tortellini.png', 'Tortellini', 'Tortellini relleno de cabutia, queso azul y nuez, con manteca de salvia y almendras.', '2019-08-06', 10),
-('pasta', '/images/products/cavatelli.png', 'Cavatelli', 'Cavatelli de remolacha con manteca de girgolas.', '2018-10-17', 8),
+('pasta', '/images/products/cavatelli.png', 'Cavatelli', 'Cavatelli de remolacha con manteca de girgolas.', '2018-10-17', 12),
 ('pasta', '/images/products/cestini.png', 'Cestini', 'Cestini rellenos de papa, tomillo, parmesano y ricota con manteca de avellanas.', '2018-01-06', 10),
 ('pasta', '/images/products/Strozzapretti.png', 'Strozzapretti', 'Strozzapretti con bolognesa de bondiola, acompañado con una focaccia.', '2020-11-04', 11),
 ('pasta', '/images/products/tagliatele.png', 'Tagliatelle', 'Tagliatelle all`Bolognese.', '2021-03-16', 11),
